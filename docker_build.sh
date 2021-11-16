@@ -1,0 +1,1 @@
+docker build -t ravipativenu/integration-suite-extention:latest -f Dockerfile .

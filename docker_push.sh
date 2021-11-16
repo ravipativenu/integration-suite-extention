@@ -1,0 +1,1 @@
+docker push ravipativenu/integration-suite-extention:latest

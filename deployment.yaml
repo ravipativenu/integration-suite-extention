@@ -1,0 +1,59 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: integration-suite-extention
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: integration-suite-extention
+  template:
+    metadata:
+      labels:
+        name: integration-suite-extention
+    spec:
+      containers:
+      - name: application
+        image: ravipativenu/integration-suite-extention:latest
+        imagePullPolicy: Always # change to pull after testing
+        ports:
+          - containerPort: 8080
+        resources:
+          limits:
+            memory: 1000Mi
+          requests:
+            memory: 32Mi          
+      imagePullSecrets:
+      - name: regcred
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: integration-suite-extention-service
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+  selector:
+    name: integration-suite-extention
+
+---
+apiVersion: gateway.kyma-project.io/v1alpha1
+kind: APIRule
+metadata:
+  name: integration-suite-extention-api
+spec:
+  gateway: kyma-gateway.kyma-system.svc.cluster.local
+  service:
+    name: integration-suite-extention-service
+    port: 8080
+    host: integration-suite-extention
+  rules:
+    - path: /.*
+      methods: ["GET"]
+      accessStrategies:
+        - handler: noop
+          config: {}  
