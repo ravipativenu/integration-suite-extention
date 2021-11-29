@@ -23,7 +23,38 @@ spec:
           limits:
             memory: 1000Mi
           requests:
-            memory: 32Mi          
+            memory: 32Mi
+        env:
+          - name: HANA_SECRET_DRIVER
+            valueFrom:
+              secretKeyRef:
+                name: hanacloud
+                key: driverName
+          - name: HANA_SECRET_DSN
+            valueFrom:
+              secretKeyRef:
+                name: hanacloud
+                key: hdbDsn
+          - name: CPI_SECRET_CLIENTID
+            valueFrom:
+              secretKeyRef:
+                name: cpi
+                key: cpi_client_id
+          - name: CPI_SECRET_CLIENTSECRET
+            valueFrom:
+              secretKeyRef:
+                name: cpi
+                key: cpi_client_secret
+          - name: CPI_SECRET_TOKENENDPOINT
+            valueFrom:
+              secretKeyRef:
+                name: cpi
+                key: cpi_token_endpoint
+          - name: CPI_SECRET_APIENDPOINT
+            valueFrom:
+              secretKeyRef:
+                name: cpi
+                key: cpi_api_endpoint
       imagePullSecrets:
       - name: regcred
 

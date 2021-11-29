@@ -5,6 +5,11 @@
 *.so
 *.dylib
 
+#Mine
+*.env
+.env
+k8s_credentials.sh
+
 # Test binary, built with `go test -c`
 *.test
 
