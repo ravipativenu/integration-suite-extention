@@ -55,6 +55,21 @@ spec:
               secretKeyRef:
                 name: cpi
                 key: cpi_api_endpoint
+          - name: AZUREBLOB_SECRET_ACCOUNTNAME
+            valueFrom:
+              secretKeyRef:
+                name: azureblob
+                key: AZUREBLOB_SECRET_ACCOUNTNAME
+          - name: AZUREBLOB_SECRET_MYACCOUNTKEY
+            valueFrom:
+              secretKeyRef:
+                name: azureblob
+                key: AZUREBLOB_SECRET_MYACCOUNTKEY
+          - name: AZUREBLOB_SECRET_MYACCOUNTURL
+            valueFrom:
+              secretKeyRef:
+                name: azureblob
+                key: AZUREBLOB_SECRET_MYACCOUNTURL
       imagePullSecrets:
       - name: regcred
 

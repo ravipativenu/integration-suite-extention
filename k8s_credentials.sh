@@ -4,5 +4,6 @@ kubectl create secret generic hanacloud --from-literal=driverName='hdb' --from-l
 
 kubectl create secret generic cpi --from-literal=cpi_client_id='<client id>' --from-literal=cpi_client_secret='<client secret>' --from-literal=cpi_token_endpoint='https://681769b2trial.authentication.us10.hana.ondemand.com/oauth/token' --from-literal=cpi_api_endpoint='https://681769b2trial.it-cpitrial05.cfapps.us10-001.hana.ondemand.com'
 
+kubectl create secret generic azureblob --from-literal=AZUREBLOB_SECRET_ACCOUNTNAME='venublobstorage' --from-literal=AZUREBLOB_SECRET_MYACCOUNTKEY='key' --from-literal=AZUREBLOB_SECRET_MYACCOUNTURL='https://venublobstorage.blob.core.windows.net/'
 
 
