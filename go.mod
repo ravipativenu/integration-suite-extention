@@ -5,6 +5,7 @@ go 1.17
 require (
 	github.com/Azure/azure-sdk-for-go/sdk/storage/azblob v0.2.0
 	github.com/SAP/go-hdb v0.105.5
+	github.com/gorilla/mux v1.8.0
 	github.com/joho/godotenv v1.4.0
 	github.com/segmentio/kafka-go v0.4.27
 	golang.org/x/oauth2 v0.0.0-20211104180415-d3ed0bb246c8

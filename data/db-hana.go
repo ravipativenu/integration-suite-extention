@@ -41,7 +41,22 @@ func (h *HanaDBEnv) getDb() (*sql.DB, error) {
 	} else {
 		return h.Db, nil
 	}
+}
 
+func GetTenantDb(schema string) (*sql.DB, error) {
+	var err error
+	// load .env file
+	err = godotenv.Load(".env")
+	if err != nil {
+		log.Println("No Local .env file. So accessing environment variables from Kyma runtime")
+	}
+	driverName := goDotEnvVariable("HANA_SECRET_DRIVER")
+	hdbDsn := "hdb://" + schema + ":" + goDotEnvVariable("HANA_SECRET_PASSWORD") + "@" + goDotEnvVariable("HANA_SECRET_URL")
+	Db, err := sql.Open(driverName, hdbDsn)
+	if err != nil {
+		return nil, err
+	}
+	return Db, nil
 }
 
 func goDotEnvVariable(key string) string {

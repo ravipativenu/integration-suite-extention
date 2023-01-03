@@ -93,5 +93,5 @@ func executeJob(job data.Job) {
 }
 
 func init() {
-	go InitializeScheduler(sc)
+	//go InitializeScheduler(sc)
 }
